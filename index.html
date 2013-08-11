@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <title>sioux</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="./bundle.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="title">SIOUX</h1>
+
+      <ul class="menu">
+        <li><a href="#about" class="touch about">About</a></li>
+        <li><a href="#modules" class="touch modules">Modules</a></li>
+        <li><a href="#how" class="touch how">How</a></li>
+      </ul>
+
+      <section class="about">
+        <a name="about"></a>
+        <h2>About</h2>
+        <p>Sioux is a collection of modules, that helps create apps for the mobile web. It tries to follow in some ways, how the programming for iOS works, but takes advantage of the benefits of javascript, CSS and <a target="_blank" href="http://nodejs.org/">nodejs</a>. These projects are node modules that can be installed via <a target="_blank" href="https://npmjs.org/">npm</a> and run in the browser using <a target="_blank" href="https://github.com/substack/node-browserify">browserify</a>. It targets mainly the popular mobile browsers (safari, and chrome for android).</p>
+        <p><strong>The projects main goal to give developers tools that makes it easy to create great apps specific to the mobile web.</strong></p>
+      </section>
+
+      <section class="modules">
+        <a name="modules"></a>
+        <h2>Modules</h2>
+        <h3><a target="_blank" href="https://github.com/gerhardberger/sioux-global">sioux-global</a></h3>
+        <pre><code>$ npm install sioux-global</code></pre>
+        <p>This module is essential for every sioux module. It's not a dependency to any of them, because it has to be required by the user once at the start of the app. It uses <a target="_blank" href="https://github.com/gerhardberger/node-touch">node-touch</a> to apply special, touch specific behaviour and events, <strong>to the elements that have the class <i>touch</i></strong>. It also can serve as a jQuery-like selector query tool, so it's easy to add events to elements this way.</p>
+        <pre><code>var $ = require('sioux-global');
+
+$('.foo').on('tap', function(event) {
+  console.log('Tapped!');
+}).on('swipestart', function (event) {
+  if (event.direction === 'RIGHT') {
+    console.log('Swipe started to the left!');
+  }
+});</code></pre>
+
+        <h3><a target="_blank" href="https://github.com/gerhardberger/sioux-segue">sioux-segue</a></h3>
+        <pre><code>$ npm install sioux-segue</code></pre>
+        <p><strong>Push</strong> and <strong>modal</strong> segue for sioux. The push type will perform a right to left wind and a left to right unwind. The modal type will animate a window from the bottom when <strong>wind</strong>ing, and back when <strong>unwind</strong>ing.</p>
+        <pre><code>var $ = require('sioux-global');
+var Segue = require('sioux-segue');
+
+var segue = new Segue($('.foo'), 'push');
+segue.wind(function () {
+  var button = document.createElement('button');
+  button.innerText = 'Click';
+  return button;
+}, function () {
+  console.log('Content loaded!');
+});</code></pre>
+      
+      <div class="phone-outer">
+        <div class="phone" title="The example only in works in Webkit browsers">
+          <div class="glass"></div>
+          <iframe src="http://felix.lovassy.hu/projects/gellert/siouxexamples/segue"></iframe>
+        </div>
+      </div>
+
+      <h3><a target="_blank" href="https://github.com/gerhardberger/sioux-navigation">sioux-navigation</a></h3>
+        <pre><code>$ npm install sioux-navigation</code></pre>
+        <p>Similar to the <a href="http://developer.apple.com/library/ios/#documentation/UIKit/Reference/UINavigationController_Class/Reference/Reference.html">iOS</a> one. It uses a stack, that stores the <strong>navigation objects</strong>. These objects have a <i>title</i>, a <i>content</i> (which is a function that returns DOM) and a <i>complete</i> property. With this, it's easy to create apps with multiple windows.</p>
+        <pre><code>var $ = require('sioux-global');
+var Navigation = require('sioux-navigation');
+
+var navObj = {
+  title: 'Home window'
+  , content: function () {
+    var h1 = document.createElement('h1');
+    h1.innerText = 'Home';
+    return h1;
+  }
+  , complete: function () {
+    console.log('Home window loaded!');
+  }
+};
+
+var nav = new Navigation($('.foo'), { initWith: navObj });
+nav.push(otherNavObj);
+nav.pop();</code></pre>
+      
+      <div class="phone-outer">
+        <div class="phone" title="The example only in works in Webkit browsers">
+          <div class="glass"></div>
+          <iframe src="http://felix.lovassy.hu/projects/gellert/siouxexamples/nav"></iframe>
+        </div>
+      </div>
+
+      <h3><a target="_blank" href="https://github.com/gerhardberger/sioux-offscreen">sioux-offscreen</a></h3>
+        <pre><code>$ npm install sioux-offscreen</code></pre>
+        <p>An off screen navigation item. Similar to the menu of the Facebook and Path app. It requires two parts: an <strong>offscreen</strong> elem which is hidden behind the other <strong>onscreen</strong> element.</p>
+        <pre><code>var $ = require('sioux-global');
+var Offscreen = require('sioux-offscreen');
+
+var off = new Offscreen($('.foo'), $('.bar'));
+off.toggle(function () {
+  console.log('Toggled!');
+})</code></pre>
+      
+        <div class="phone-outer">
+          <div class="phone" title="The example only in works in Webkit browsers">
+            <div class="glass"></div>
+            <iframe src="http://felix.lovassy.hu/projects/gellert/siouxexamples/offscreen"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="how">
+        <a name="how"></a>
+        <h2>How</h2>
+        <h3>install</h3>
+        <p>To install the modules, use the nodejs package manager, <strong><a href="https://npmjs.org/">npm</a></strong>:</p>
+        <pre><code>$ npm install sioux-global</code></pre>
+        <p>To use the modules in the browser and create a bundle, use <strong><a target="_blank" href="https://github.com/substack/node-browserify">browserify</a></strong>:</p>
+        <pre><code>$ npm install browserify -g</code></pre>
+        <p>You can use browserift in command line:</p>
+        <pre><code>$ browserify main.js > bundle.js</code></pre>
+        <p>Or use it in code:</p>
+        <pre><code>var browserify = require('browserify');
+var b = browserify();
+
+b.add('./main.js');
+b.bundle().pipe(process.stdout);</code></pre>
+        <p>The other important part is to create a bundle from the used .css files that are in the modules. You can create this bundle easily using <strong><a target="_blank" href="https://github.com/timoxley/cascadify">cascadify</a></strong>:</p>
+        <pre><code>$ npm install -g cascadify</code></pre>
+        <p>Command line:</p>
+        <pre><code>$ cascadify ./main.js > style.css</code></pre>
+        <p>In code:</p>
+        <pre><code>var cascadify = require('cascadify')();
+
+cascadify.add('./main.js');
+cascadify.bundle().pipe(process.stdout);</code></pre>
+
+        <h3>use</h3>
+        <p>To start use the modules, in your .html file there has to be a div with the class <strong>screen</strong>, all the action goes on in there:</p>
+        <pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="./style.css"&gt;
+    &lt;script src="./bundle.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="screen"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>In your .js file, you just use them as regular node modules:</p>
+        <pre><code>var $ = require('sioux-global');
+window.$ = $; <i>// it is optional to make it global, but useful</i>
+var Offscreen = require('sioux-offscreen');
+
+var off = new Offscreen($('.foo'), $('.bar'));
+off.show();</code></pre>
+
+        <h3>get involved</h3>
+        <p>There are still a lot to do to make it easy to create apps for the mobile web. These modules are just the beginning, I have more ideas for modules, that will be done in the near future. And make your own idea, if you beleive, that it is possible to create apps for the mobile web that can live up to the quality of native apps.</p>
+        <p>If you have any question, feedback, problem with project or modules:</p>
+        <div class="profile">
+          <img src="images/profilepic.png">
+          <ul>
+            <li><a target="_blank" href="https://twitter.com/gerhard_berger">@gerhard_berger</a></li>
+            <li><a target="_blank" href="https://github.com/gerhardberger/">github</a></li>
+            <li>93.morph@gmail.com</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

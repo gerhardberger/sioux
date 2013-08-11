@@ -1,0 +1,318 @@
+a {
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+input {
+	-webkit-user-select: auto;
+}
+
+
+body {
+	background: #bbd1df;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bbd1df', endColorstr='#fff7d3');
+	background: linear-gradient(#bbd1df,  #fff7d3);
+	background: -webkit-gradient(linear, left top, left bottom, from(#bbd1df), to(#fff7d3));
+	background: -moz-linear-gradient(top,  #bbd1df,  #fff7d3);
+
+}
+
+.container {
+	width: 960px;
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Varela Round', sans-serif;
+	color: #374c47;
+	font-weight: lighter;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 0;
+	font-size: 74px;
+	margin-top: 24px;
+	letter-spacing: 6px;
+}
+
+h2 {
+	font-size: 44px;
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 34px;
+}
+
+p {
+	text-align: justify;
+	font-size: 20px;
+	font-family: Arial, sans-serif;
+	color: #374c47;
+	line-height: 30px;
+	padding: 0 8px;
+}
+
+a, a:visited {
+	color: #899aac;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+pre {
+	padding: 18px 20px;
+	font-size: 16px;
+	background: rgba(255,255,255,0.56);
+	border-radius: 5px;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+pre code i {
+	color: grey;
+}
+
+.menu {
+	list-style: none;
+	padding: 0;
+	margin-top: 36px;
+}
+
+.menu li {
+	display: inline-block;
+	width: 32%;
+	text-align: center;
+	
+}
+
+.menu li a {
+	text-decoration: none;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 22px;
+	color: #374c47;
+	font-weight: lighter;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.menu li a.hover {
+	color: rgba(55, 76, 71, 0.4);
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+.phone-outer {
+	position: relative;
+	margin: -25px 0;	
+}
+
+.phone {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 80px 23px;
+	background: url(./images/iphone2.png) no-repeat;
+
+	-webkit-transition: -webkit-transform .3s ease-out;
+	   -moz-transition: -webkit-transform .3s ease-out;
+	    -ms-transition: -webkit-transform .3s ease-out;
+	     -o-transition: -webkit-transform .3s ease-out;
+	        transition: -webkit-transform .3s ease-out;
+ 	-webkit-transform: scale(.85);
+ 	   -moz-transform: scale(.85);
+ 	    -ms-transform: scale(.85);
+ 	     -o-transform: scale(.85);
+ 	        transform: scale(.85);
+
+  position: relative;
+  width: 215px;
+  margin-top: -20px;
+  overflow: hidden;
+}
+
+.phone iframe {
+	border: none;
+	width: 217px;
+	height: 387px;
+	overflow: hidden;
+}
+
+.phone > .glass {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 79px 23px;
+	width: 217px;
+	height: 389px;
+}
+
+.profile {
+	position: relative;
+	margin: 0 auto;
+	width: 330px;
+}
+
+.profile img {
+	height: 75px;
+	border-radius: 40px;
+	-webkit-transform: translateY(-6px);
+	   -moz-transform: translateY(-6px);
+	    -ms-transform: translateY(-6px);
+	     -o-transform: translateY(-6px);
+	        transform: translateY(-6px);
+}
+
+.profile ul {
+	list-style-type: none;
+	display: inline-block;
+}
+
+.profile ul li {
+	padding: 10px 8px;
+	font-family: 'Varela Round', sans-serif;
+}
+
+section {
+	padding-top: 20px;
+}
+
+@media only screen and (max-width: 959px) {
+
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+.container {
+	width: 768px;
+}
+
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+
+.container {
+	width: 300px;
+}
+
+h1 {
+	font-size: 56px;
+	margin-top: 20px;
+}
+
+h2 {
+	font-size: 38px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+p {
+	font-size: 18px;
+	line-height: 28px;
+}
+
+pre {
+	font-size: 15px;
+}
+
+.menu li a {
+	font-size: 20px;
+}
+
+.phone-outer {
+	margin-bottom: -70px;
+}
+
+.phone {
+	-webkit-transform: scale(.7);
+	   -moz-transform: scale(.7);
+	    -ms-transform: scale(.7);
+	     -o-transform: scale(.7);
+	        transform: scale(.7);
+	margin-top: -65px;
+}
+
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+.container {
+	width: 420px;
+}
+
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+
+.container {
+	width: 300px;
+}
+
+h1 {
+	font-size: 42px;
+	margin-top: 16px;
+}
+
+h2 {
+	font-size: 28px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+p {
+	font-size: 16px;
+	line-height: 26px;
+}
+
+pre {
+	font-size: 14px;
+}
+
+.menu li a {
+	font-size: 16px;
+}
+
+.phone-outer {
+	margin-bottom: -90px;
+}
+
+.phone {
+	-webkit-transform: scale(.6);
+	   -moz-transform: scale(.6);
+	    -ms-transform: scale(.6);
+	     -o-transform: scale(.6);
+	        transform: scale(.6);
+	margin-top: -95px;
+}
+
+.profile {
+	width: 290px;
+}
+
+.profile li {
+	padding: 8px;
+}
+
+.profile img {
+	height: 60px;
+	-webkit-transform: translateY(-10px);
+	   -moz-transform: translateY(-10px);
+	    -ms-transform: translateY(-10px);
+	     -o-transform: translateY(-10px);
+	        transform: translateY(-10px);
+}
+
+}
+div[data-navigation="bar"] div[data-navigation="bar-back"] button {
+	padding: 12px 16px 7px;
+}
